@@ -1,0 +1,86 @@
+{
+  "id": "science-quiz-1776910850522",
+  "name": "Science Quiz",
+  "cards": [
+    {
+      "question": "What is the closest planet to the Sun?",
+      "answer": "Mercury"
+    },
+    {
+      "question": "What is the chemical symbol for water?",
+      "answer": "H2O"
+    },
+    {
+      "question": "How many bones are in the adult human body?",
+      "answer": "206"
+    },
+    {
+      "question": "What gas do plants absorb during photosynthesis?",
+      "answer": "Carbon dioxide"
+    },
+    {
+      "question": "What is the speed of light in a vacuum?",
+      "answer": "299,792,458 m/s"
+    },
+    {
+      "question": "What is the powerhouse of the cell?",
+      "answer": "mitochondria"
+    },
+    {
+      "question": "What planet is known as the Red Planet?",
+      "answer": "Mars"
+    },
+    {
+      "question": "What is the atomic number of carbon?",
+      "answer": "6"
+    },
+    {
+      "question": "What force keeps planets in orbit around the Sun?",
+      "answer": "Gravity"
+    },
+    {
+      "question": "What is the most abundant gas in Earth's atmosphere?",
+      "answer": "Nitrogen"
+    },
+    {
+      "question": "What is the chemical symbol for gold?",
+      "answer": "Au"
+    },
+    {
+      "question": "How many chromosomes do humans have?",
+      "answer": "46"
+    },
+    {
+      "question": "What is the hardest natural substance on Earth?",
+      "answer": "Diamond"
+    },
+    {
+      "question": "What organ produces insulin in the human body?",
+      "answer": "pancreas"
+    },
+    {
+      "question": "What is the boiling point of water at sea level?",
+      "answer": "100°C (212°F)"
+    },
+    {
+      "question": "What type of wave is sound?",
+      "answer": "longitudinal  wave"
+    },
+    {
+      "question": "What is the largest planet in our solar system?",
+      "answer": "Jupiter"
+    },
+    {
+      "question": "What is the process by which liquid water turns to vapor?",
+      "answer": "Evaporation"
+    },
+    {
+      "question": "What particle has a negative charge in an atom?",
+      "answer": "Electron"
+    },
+    {
+      "question": "What is Newton's Second Law of Motion?",
+      "answer": "F = ma"
+    }
+  ]
+}

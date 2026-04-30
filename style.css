@@ -1,0 +1,380 @@
+/* ── Base ─────────────────────────────────────────────── */
+body {
+  background: #111111;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  color: #f0f0f0;
+}
+
+/* ── Bootstrap overrides for dark theme ──────────────── */
+.text-muted { color: #adb5bd !important; }
+
+.form-control {
+  background: #1e1e1e;
+  border-color: #3a3a3a;
+  color: #f0f0f0;
+}
+.form-control:focus {
+  background: #252525;
+  border-color: #ff6b00;
+  color: #f0f0f0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 107, 0, 0.25);
+}
+.form-control::placeholder { color: #666; }
+
+.form-label { color: #ccc; }
+
+.table {
+  color: #f0f0f0;
+}
+.table-light th {
+  background: #1e1e1e !important;
+  color: #adb5bd;
+  border-color: #3a3a3a;
+}
+.table td, .table th {
+  border-color: #2e2e2e;
+}
+.table-bordered { border-color: #2e2e2e; }
+
+/* Primary button → orange */
+.btn-primary {
+  background-color: #ff6b00;
+  border-color: #ff6b00;
+  color: #fff;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #e05e00;
+  border-color: #e05e00;
+  color: #fff;
+}
+.btn-primary:active {
+  background-color: #cc5500 !important;
+  border-color: #cc5500 !important;
+}
+
+/* Outline secondary → orange-tinted */
+.btn-outline-secondary {
+  color: #ccc;
+  border-color: #555;
+}
+.btn-outline-secondary:hover {
+  background-color: #2a2a2a;
+  border-color: #888;
+  color: #fff;
+}
+
+/* Outline primary → orange */
+.btn-outline-primary {
+  color: #ff6b00;
+  border-color: #ff6b00;
+}
+.btn-outline-primary:hover {
+  background-color: #ff6b00;
+  border-color: #ff6b00;
+  color: #fff;
+}
+
+/* Outline danger */
+.btn-outline-danger {
+  color: #ff4d4d;
+  border-color: #ff4d4d;
+}
+.btn-outline-danger:hover {
+  background-color: #ff4d4d;
+  border-color: #ff4d4d;
+  color: #fff;
+}
+
+/* Badge secondary */
+.badge.bg-secondary { background-color: #3a3a3a !important; }
+.badge.bg-success   { background-color: #1a6b3a !important; }
+
+/* Modal */
+.modal-content {
+  background: #1a1a1a;
+  border: 1px solid #3a3a3a;
+  color: #f0f0f0;
+}
+.modal-header, .modal-footer { border-color: #3a3a3a; }
+.btn-close { filter: invert(1); }
+
+/* Dropdown */
+.dropdown-menu {
+  background: #1e1e1e;
+  border-color: #3a3a3a;
+}
+.dropdown-item { color: #f0f0f0; }
+.dropdown-item:hover { background: #2a2a2a; color: #fff; }
+.dropdown-item.text-danger { color: #ff4d4d !important; }
+
+/* ── View transitions ─────────────────────────────────── */
+.view {
+  display: none;
+  animation: fadeIn 0.25s ease forwards;
+}
+.view.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Navbar ───────────────────────────────────────────── */
+.navbar {
+  background: #000 !important;
+  border-bottom: 1px solid #ff6b00 !important;
+}
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #ff6b00 !important;
+}
+
+/* ── Headings ─────────────────────────────────────────── */
+h2, h4, h5, h6 { color: #f0f0f0; }
+
+/* ── Set cards (home grid) ────────────────────────────── */
+.set-card {
+  background: #1a1a1a;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: box-shadow 0.18s, transform 0.18s;
+  position: relative;
+}
+.set-card:hover {
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.18);
+  transform: translateY(-2px);
+  border-color: #ff6b00;
+}
+.set-card .set-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  color: #f0f0f0;
+}
+.set-card .set-count {
+  font-size: 0.85rem;
+  color: #888;
+}
+.set-card .dropdown {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+.set-card .btn-dots {
+  background: none;
+  border: none;
+  color: #888;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  line-height: 1;
+}
+.set-card .btn-dots:hover {
+  background: #2a2a2a;
+  color: #ff6b00;
+}
+
+/* ── Mode selection cards ─────────────────────────────── */
+.mode-card {
+  background: #1a1a1a;
+  border: 1px solid #2e2e2e;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.18s, transform 0.18s;
+  text-align: center;
+  user-select: none;
+}
+.mode-card:hover {
+  box-shadow: 0 4px 16px rgba(255, 107, 0, 0.18);
+  transform: translateY(-2px);
+  border-color: #ff6b00;
+}
+.mode-card .mode-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.mode-card .mode-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #f0f0f0;
+}
+.mode-card.study .mode-icon { color: #ff6b00; }
+.mode-card.quiz  .mode-icon { color: #ff9a00; }
+
+/* ── Preview table ────────────────────────────────────── */
+.preview-table th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #888;
+  font-weight: 600;
+}
+
+/* ── Card editor table ────────────────────────────────── */
+.card-editor-table td {
+  vertical-align: middle;
+  padding: 0.4rem 0.5rem;
+}
+.card-editor-table input.borderless {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  padding: 0.3rem 0.4rem;
+  border-radius: 4px;
+  transition: background 0.15s;
+  color: #f0f0f0;
+}
+.card-editor-table input.borderless:focus {
+  background: #2a1a00;
+  outline: none;
+  box-shadow: none;
+}
+.card-editor-table .row-num {
+  color: #555;
+  font-size: 0.85rem;
+  width: 2rem;
+  text-align: center;
+}
+.card-editor-table .btn-remove {
+  color: #555;
+  background: none;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.card-editor-table .btn-remove:hover {
+  color: #ff4d4d;
+  background: #2a0000;
+}
+
+/* ── Flashcard 3D flip ────────────────────────────────── */
+.flashcard-scene {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 16px;
+}
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 16px;
+}
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-size: 1.25rem;
+  text-align: center;
+}
+.flashcard-front {
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  color: #f0f0f0;
+}
+.flashcard-back {
+  background: linear-gradient(135deg, #ff6b00, #cc3300);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+/* ── Card container slide transition ─────────────────── */
+.card-container {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.card-container.slide-out-left  { opacity: 0; transform: translateX(-40px); }
+.card-container.slide-out-right { opacity: 0; transform: translateX(40px); }
+.card-container.slide-in-left   { opacity: 0; transform: translateX(-40px); }
+.card-container.slide-in-right  { opacity: 0; transform: translateX(40px); }
+
+/* ── Quiz feedback ────────────────────────────────────── */
+.feedback-correct {
+  color: #4caf50;
+  font-weight: 600;
+}
+.feedback-wrong {
+  color: #ff4d4d;
+  font-weight: 600;
+}
+
+/* ── Quiz complete screen ─────────────────────────────── */
+.quiz-complete-card {
+  background: #1a1a1a;
+  border: 1px solid #2e2e2e;
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* ── Misc ─────────────────────────────────────────────── */
+.hint-text {
+  font-size: 0.8rem;
+  color: #555;
+}
+.no-sets-msg {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ── Visual FX — correct flash ────────────────────────── */
+@keyframes correctFlash {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
+  25%  { box-shadow: 0 0 0 10px rgba(255, 107, 0, 0.55); }
+  60%  { box-shadow: 0 0 0 20px rgba(255, 107, 0, 0.2); }
+  100% { box-shadow: 0 0 0 24px rgba(255, 107, 0, 0); }
+}
+.fx-correct {
+  animation: correctFlash 0.65s ease-out forwards;
+}
+
+/* ── Visual FX — wrong shake + red flash ─────────────── */
+@keyframes wrongShake {
+  0%   { transform: translateX(0);    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+  15%  { transform: translateX(-8px); box-shadow: 0 0 0 8px rgba(255, 77, 77, 0.5); }
+  30%  { transform: translateX(8px);  box-shadow: 0 0 0 12px rgba(255, 77, 77, 0.35); }
+  45%  { transform: translateX(-6px); }
+  60%  { transform: translateX(6px);  }
+  75%  { transform: translateX(-3px); }
+  100% { transform: translateX(0);    box-shadow: 0 0 0 20px rgba(255, 77, 77, 0); }
+}
+.fx-wrong {
+  animation: wrongShake 0.65s ease-out forwards;
+}
+
+/* ── Visual FX — particle burst ──────────────────────── */
+.fx-particle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+@keyframes particleBurst {
+  0%   { opacity: 1;   transform: translate(-50%, -50%) translate(0, 0) scale(1); }
+  80%  { opacity: 0.8; transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.6); }
+  100% { opacity: 0;   transform: translate(-50%, -50%) translate(calc(var(--dx) * 1.2), calc(var(--dy) * 1.2)) scale(0); }
+}

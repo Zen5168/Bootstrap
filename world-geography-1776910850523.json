@@ -1,0 +1,26 @@
+{
+  "id": "world-geography-1776910850523",
+  "name": "World Geography",
+  "cards": [
+    { "question": "What is the capital of France?", "answer": "Paris" },
+    { "question": "What is the longest river in the world?", "answer": "The Nile (approximately 6,650 km)" },
+    { "question": "On which continent is the Sahara Desert located?", "answer": "Africa" },
+    { "question": "What is the capital of Australia?", "answer": "Canberra" },
+    { "question": "Which country has the largest land area in the world?", "answer": "Russia" },
+    { "question": "What is the tallest mountain in the world?", "answer": "Mount Everest (8,849 m)" },
+    { "question": "What is the capital of Japan?", "answer": "Tokyo" },
+    { "question": "How many continents are there on Earth?", "answer": "7" },
+    { "question": "What is the smallest country in the world?", "answer": "Vatican City" },
+    { "question": "Which ocean is the largest?", "answer": "The Pacific Ocean" },
+    { "question": "What is the capital of Brazil?", "answer": "Brasília" },
+    { "question": "Through which countries does the Amazon River flow?", "answer": "Brazil, Peru, and Colombia" },
+    { "question": "What is the capital of Canada?", "answer": "Ottawa" },
+    { "question": "Which country is home to the Great Barrier Reef?", "answer": "Australia" },
+    { "question": "What is the capital of Egypt?", "answer": "Cairo" },
+    { "question": "What is the longest mountain range in the world?", "answer": "The Andes (in South America)" },
+    { "question": "What is the capital of South Africa?", "answer": "Pretoria (executive), Cape Town (legislative), Bloemfontein (judicial)" },
+    { "question": "Which country has the most natural lakes?", "answer": "Canada" },
+    { "question": "What is the capital of Argentina?", "answer": "Buenos Aires" },
+    { "question": "What is the deepest lake in the world?", "answer": "Lake Baikal (Russia)" }
+  ]
+}
