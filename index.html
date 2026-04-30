@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcards</title>
+
+  <!-- 📚 emoji favicon via SVG data URI -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+
+  <!-- Inter font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ──────────────────────────────────────────── -->
+  <nav class="navbar navbar-dark bg-dark border-bottom shadow-sm">
+    <div class="container">
+      <span class="navbar-brand" id="nav-brand">📚 フラッシュカード</span>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+
+    <!-- ══════════════════════════════════════════════════════
+         VIEW 1 — HOME
+    ═══════════════════════════════════════════════════════ -->
+    <div id="view-home" class="view">
+      <div class="mb-4">
+        <h2 class="fw-bold mb-1">Time to review!</h2>
+        <p class="text-muted mb-0">Create flashcard sets and study them.</p>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h5 class="fw-semibold mb-0">Your Sets</h5>
+        <button class="btn btn-primary btn-sm" id="btn-new-set">
+          <i class="bi bi-plus-lg me-1"></i>New Set
+        </button>
+      </div>
+
+      <div id="sets-grid" class="row g-3">
+        <!-- set cards injected here -->
+      </div>
+
+      <p id="no-sets-msg" class="no-sets-msg mt-3" style="display:none;">
+        No sets yet. Create your first one!
+      </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         VIEW 2 — CREATE / EDIT SET
+    ═══════════════════════════════════════════════════════ -->
+    <div id="view-edit" class="view">
+      <div class="d-flex align-items-center mb-4 gap-2">
+        <button class="btn btn-outline-secondary btn-sm" id="edit-back-btn">
+          <i class="bi bi-arrow-left"></i> Back
+        </button>
+        <h4 class="fw-bold mb-0" id="edit-view-title">New Set</h4>
+      </div>
+
+      <div class="mb-3" style="max-width:400px;">
+        <label class="form-label fw-semibold" for="set-name-input">Set Name</label>
+        <input type="text" class="form-control" id="set-name-input" placeholder="e.g. Science Quiz" />
+      </div>
+
+      <div class="mb-2">
+        <h6 class="fw-semibold">Cards</h6>
+      </div>
+
+      <div class="table-responsive mb-2">
+        <table class="table card-editor-table align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th style="width:2.5rem;">#</th>
+              <th>Question</th>
+              <th>Answer</th>
+              <th style="width:2.5rem;"></th>
+            </tr>
+          </thead>
+          <tbody id="cards-tbody">
+            <!-- rows injected here -->
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-outline-primary btn-sm mb-4" id="btn-add-card">
+        <i class="bi bi-plus-lg me-1"></i>Add Card
+      </button>
+
+      <div>
+        <button class="btn btn-primary" id="btn-save-set">
+          <i class="bi bi-floppy me-1"></i>Save Set
+        </button>
+        <div id="edit-error" class="text-danger small mt-2" style="display:none;"></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         VIEW 3 — SET DETAIL
+    ═══════════════════════════════════════════════════════ -->
+    <div id="view-detail" class="view">
+      <!-- Top row: back + title LEFT, edit + delete RIGHT -->
+      <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-outline-secondary btn-sm" id="detail-back-btn">
+            <i class="bi bi-arrow-left"></i> Back
+          </button>
+          <h4 class="fw-bold mb-0" id="detail-set-title">Set Title</h4>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary btn-sm" id="detail-edit-btn">
+            <i class="bi bi-pencil me-1"></i>Edit
+          </button>
+          <button class="btn btn-outline-danger btn-sm" id="detail-delete-btn">
+            <i class="bi bi-trash me-1"></i>Delete
+          </button>
+        </div>
+      </div>
+
+      <!-- Mode selection -->
+      <div class="row g-3 mb-2">
+        <div class="col-6 col-sm-4 col-md-3">
+          <div class="mode-card study" id="btn-study-mode">
+            <div class="mode-icon"><i class="bi bi-book"></i></div>
+            <div class="mode-label">Study Mode</div>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-3">
+          <div class="mode-card quiz" id="btn-quiz-mode">
+            <div class="mode-icon"><i class="bi bi-pencil-square"></i></div>
+            <div class="mode-label">Quiz Mode</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card count BELOW mode cards -->
+      <p class="text-muted small mb-4" id="detail-card-count"></p>
+
+      <!-- Preview table -->
+      <h6 class="fw-semibold mb-2">Preview</h6>
+      <div class="table-responsive">
+        <table class="table preview-table table-sm table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th style="width:2.5rem;">#</th>
+              <th>Question</th>
+              <th>Answer</th>
+            </tr>
+          </thead>
+          <tbody id="preview-tbody"></tbody>
+        </table>
+      </div>
+      <p id="preview-more" class="text-muted small" style="display:none;"></p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         VIEW 4 — STUDY MODE
+    ═══════════════════════════════════════════════════════ -->
+    <div id="view-study" class="view">
+      <div class="d-flex align-items-center mb-4 gap-2">
+        <button class="btn btn-outline-secondary btn-sm" id="study-back-btn">
+          <i class="bi bi-arrow-left"></i> Back
+        </button>
+        <h4 class="fw-bold mb-0">Study Mode</h4>
+        <span class="badge bg-secondary ms-2" id="study-progress"></span>
+      </div>
+
+      <div class="card-container" id="study-card-container">
+        <div class="flashcard-scene" id="study-scene" onclick="App.studyFlip()">
+          <div class="flashcard" id="study-card">
+            <div class="flashcard-face flashcard-front" id="study-front">
+              <span id="study-question"></span>
+            </div>
+            <div class="flashcard-face flashcard-back" id="study-back">
+              <span id="study-answer"></span>
+            </div>
+          </div>
+        </div>
+        <p class="hint-text text-center mt-2">Click card to flip</p>
+      </div>
+
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button class="btn btn-outline-secondary" id="study-prev-btn">
+          <i class="bi bi-arrow-left me-1"></i>Prev
+        </button>
+        <button class="btn btn-primary" id="study-next-btn">
+          Next<i class="bi bi-arrow-right ms-1"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         VIEW 5 — QUIZ MODE
+    ═══════════════════════════════════════════════════════ -->
+    <div id="view-quiz" class="view">
+      <div class="d-flex align-items-center mb-4 gap-2 flex-wrap">
+        <button class="btn btn-outline-secondary btn-sm" id="quiz-back-btn">
+          <i class="bi bi-arrow-left"></i> Back
+        </button>
+        <h4 class="fw-bold mb-0">Quiz Mode</h4>
+        <span class="badge bg-secondary ms-2" id="quiz-progress"></span>
+        <span class="badge bg-success ms-1" id="quiz-score"></span>
+      </div>
+
+      <!-- Active quiz -->
+      <div id="quiz-active">
+        <div class="card-container" id="quiz-card-container">
+          <div class="flashcard-scene" id="quiz-scene">
+            <div class="flashcard" id="quiz-card">
+              <div class="flashcard-face flashcard-front" id="quiz-front">
+                <span id="quiz-question"></span>
+              </div>
+              <div class="flashcard-face flashcard-back" id="quiz-back">
+                <span id="quiz-answer"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-center gap-2" id="quiz-input-row">
+          <input type="text" class="form-control" id="quiz-answer-input"
+                 placeholder="Your answer…" style="max-width:340px;" />
+          <button class="btn btn-primary" id="quiz-submit-btn">Submit</button>
+        </div>
+
+        <div class="text-center mt-3" id="quiz-feedback" style="display:none;"></div>
+
+        <div class="d-flex justify-content-center mt-3" id="quiz-next-row" style="display:none!important;">
+          <button class="btn btn-primary" id="quiz-next-btn">
+            Next<i class="bi bi-arrow-right ms-1"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz complete -->
+      <div id="quiz-complete" style="display:none;">
+        <div class="quiz-complete-card mt-3">
+          <div style="font-size:3rem;">🎉</div>
+          <h4 class="fw-bold mt-2">Quiz Complete!</h4>
+          <p class="text-muted" id="quiz-complete-msg"></p>
+          <div class="d-flex justify-content-center gap-3 mt-3">
+            <button class="btn btn-primary" id="quiz-retry-btn">
+              <i class="bi bi-arrow-repeat me-1"></i>Retry
+            </button>
+            <button class="btn btn-outline-secondary" id="quiz-done-btn">
+              <i class="bi bi-arrow-left me-1"></i>Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <!-- Delete confirmation modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Delete Set</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete <strong id="delete-set-name"></strong>?
+          This cannot be undone.
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirm-delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
